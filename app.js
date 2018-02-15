@@ -8,6 +8,7 @@ import './config/mongodb-connection';
 // import favicon from 'serve-favicon';
 
 import index from './routes/index';
+import userRoutes from './routes/UsersRoutes';
 
 const app = express();
 const debug = Debug('auth-jwt:app');
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/api', userRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
