@@ -13,7 +13,13 @@ router.post('/users', async (req, res) => {
     try {
         const userBody = await user.save();
         const token = await userBody.generateAuthToken();
-        res.header('x-auth', token).send(userBody)
+
+        const response = {
+            id: userBody._id,
+            email: userBody.email
+        };
+
+        res.header('x-auth', token).send({data: response});
     } catch (err) {
         res.status(400).send({status: err})
     }

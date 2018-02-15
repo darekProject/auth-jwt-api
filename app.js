@@ -7,7 +7,6 @@ import path from 'path';
 import './config/mongodb-connection';
 // import favicon from 'serve-favicon';
 
-import index from './routes/index';
 import userRoutes from './routes/UsersRoutes';
 
 const app = express();
@@ -24,10 +23,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(cookieParser());
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
 app.use('/api', userRoutes);
 
 // catch 404 and forward to error handler
