@@ -17,7 +17,8 @@ router.post('/users', async (req, res) => {
 
         const response = {
             id: userBody._id,
-            email: userBody.email
+            email: userBody.email,
+            token
         };
 
         res.header('x-auth', token).send({data: response});
@@ -40,6 +41,19 @@ router.post('/login', async (req, res) => {
     } catch (err) {
         res.status(400).send({status: err});
     }
+});
+
+router.delete('/logout', authenticate, async (req, res) => {
+    const user = req.user;
+    const token = req.token;
+
+    try {
+        await user.removeToken(token);
+        res.status(200).send({status: 'success'});
+    } catch (e) {
+        res.status(400).send({status: e});
+    }
+
 });
 
 router.post('/change_email', authenticate, async (req, res) => {
