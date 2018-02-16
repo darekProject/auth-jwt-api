@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(cookieParser());
-app.use('/api', userRoutes);
+app.use('/api/user', userRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

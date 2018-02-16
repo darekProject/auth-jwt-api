@@ -4,7 +4,7 @@ import authenticate from "../middleware/auth";
 
 const router = express.Router();
 
-router.post('/users', async (req, res) => {
+router.post('/add', async (req, res) => {
     const {email, password} = req.body.data;
     const user = new User({
         email,
