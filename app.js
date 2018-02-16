@@ -7,7 +7,7 @@ import path from 'path';
 import './config/mongodb-connection';
 // import favicon from 'serve-favicon';
 
-import userRoutes from './routes/UsersRoutes';
+import userRoutes from './routes/UserRoutes';
 
 const app = express();
 const debug = Debug('auth-jwt:app');

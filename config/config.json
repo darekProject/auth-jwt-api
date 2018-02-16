@@ -1,0 +1,10 @@
+{
+  "test": {
+    "MONGODB_URI": "mongodb://localhost:27017/UserJwtTest",
+    "JWT_SECRET": "asdafjsdgjspot2903i45rw;fkdm"
+  },
+  "development": {
+    "MONGODB_URI": "mongodb://localhost:27017/UserJwt",
+    "JWT_SECRET": "a128734983uidofhw83y4982314"
+  }
+}
