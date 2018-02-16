@@ -27,6 +27,21 @@ router.post('/users', async (req, res) => {
 
 });
 
+router.post('/login', async (req, res) => {
+    const {email, password} = req.body.data;
+
+    try {
+        const user = await User.findByCredentials(email, password);
+        const token = await user.generateAuthToken();
+        const response = {
+            token
+        };
+        res.header('x-auth', token).send({data: response});
+    } catch (err) {
+        res.status(400).send({status: err});
+    }
+});
+
 router.post('/change_email', authenticate, async (req, res) => {
     const _id = req.user._id;
     const {email} = req.body.data;
