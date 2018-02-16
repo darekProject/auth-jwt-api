@@ -45,8 +45,6 @@ router.post('/change_email', authenticate, async (req, res) => {
     } catch (err) {
         res.status(422).send({status: err});
     }
-
-
 });
 
 export default router;
